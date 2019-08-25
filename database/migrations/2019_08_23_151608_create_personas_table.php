@@ -15,7 +15,6 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('NO');
             $table->string('Seccional');
             $table->string('Fondo');
             $table->string('Genero');
@@ -24,7 +23,18 @@ class CreatePersonasTable extends Migration
             $table->string('Numero_ID');
             $table->string('PIP/VISA');
             $table->string('Correo');
+            $table->bigInteger('Financiacion_Nacional');
+            $table->bigInteger('ValorAsumidoHotelesAlimentacion');
+            $table->bigInteger('ValorAsumidoInscripciones');
+            $table->bigInteger('ValorTiquetes');
+            $table->bigInteger('ValorMensualHospedaje');
+            $table->bigInteger('ValorTotalAsumido');
+            $table->bigInteger('TasaDeCambioFViaje');
+            $table->bigInteger('ValorTotalAsumidoUSD');
+            $table->bigInteger('Financiacion_Internacional');
+            $table->bigInteger('Soporte');
             $table->string('Programa');
+            $table->string('Acreditacion');
             $table->string('Institucion');
             $table->string('Vinculacion');
             $table->string('Tipom');
@@ -41,8 +51,8 @@ class CreatePersonasTable extends Migration
             $table->string('Año');
             $table->text('Observaciones');
             $table->string('Semestre');
-            $table->bigInteger('Financiacion');
-            $table->string('Acreditacion');
+
+            
 
             $table->timestamps();
         });
