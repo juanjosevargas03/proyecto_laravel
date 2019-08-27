@@ -15,7 +15,10 @@ class PersonasController extends Controller
      */
     public function index()
     {
-        return view('index');
+
+        $datos['personas']=Personas::paginate(5);
+        
+        return view('index', $datos);
     }
 
     /**
