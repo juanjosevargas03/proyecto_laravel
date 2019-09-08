@@ -2,35 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Personas;
-use Faker\Provider\fr_BE\Person;
 use Illuminate\Http\Request;
+use DB; 
 
-class PersonasController extends Controller
+class ChartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-
-        $datos['personas']=Personas::paginate(5);
-        
-        return view('index', $datos);
-        return view('Chart', $datos);
-        
+        $pastel = DB::select("select nombre, semestre from personas");
+        return view('chart', ['pastel'=> $pastel]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('form_Agregar');
+        
     }
 
     /**
@@ -42,19 +26,7 @@ class PersonasController extends Controller
     public function store(Request $request)
     {
         //
-        $datosPersonas = request()->all();
-
-        $datosPersonas = request()->except('_token');
-
-        Personas::insert($datosPersonas);
-
-
-        return response()->json($datosPersonas);
-
-
-
-
-    }
+       }
 
     /**
      * Display the specified resource.

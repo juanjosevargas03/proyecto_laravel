@@ -16,13 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/chart', function () {
-    return view('chart');
+Route::get('/personas', function () {
+    return view('index');
 });
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
 
 
 
@@ -31,6 +27,7 @@ Route::get('/welcome', function () {
 Route::get('form','PersonasController@create');
 
 Route::resource('personas', 'PersonasController');
+Route::get('chart', 'ChartController@index');
 
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
