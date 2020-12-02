@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+<?
+ @$message = $_REQUEST['message'] ;
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,12 +60,13 @@
                             
                                 <div class="form-group">
                                     <label>Direccion Electronico</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
-                                </div>
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña" required>
+                                        <label><? echo $message ?></label>
+                               </div>
 
                                 <button class="btn btn-danger btn-lg btn-block" type="submit">ENTRAR</button>
 

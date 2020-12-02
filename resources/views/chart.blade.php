@@ -1,47 +1,156 @@
-<html>
+@extends('panel')
 
 <head>
-    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        // Load the Visualization API and the corechart package.
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
+     
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChartBarra);
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+     function drawChartBarra() {
+        var data = google.visualization.arrayToDataTable([
 
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function drawChart() {
+          ['Programa', 'Cantidad de Aspirantes'],
 
-            // Create the data table.
-            var data = google.visualization.arrayToDataTable([
-                ['Productos', 'mes'],
-                @foreach($pastel as $pastels)['{{ $pastels->nombre}}', '{{$pastels->semestre  }}'],
-                @endforeach
-            ]);
+           @foreach ($barr as $barras)
+          ['{{$barras->Programa}}', {{$barras->Cantidad}}],
+          @endforeach
 
 
-            // Set chart options
-            var options = {
-                'title': 'How Much Pizza I Ate Last Night',
-                'width': 400,
-                'height': 300
-            };
 
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
+
+]);
+
+        var options = {
+          
+          
+         
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart'));
+
+        chart.draw(data,google.charts.Bar.convertOptions(options));
+      }
+
+     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartPie);
+
+      function drawChartPie() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+
+          @foreach ($pastel as $pastels)
+          ['{{$pastels->Programa}}', {{$pastels->Cantidad}}],
+          @endforeach
+
+
+        ]);
+
+        var options = {
+          
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+
+      
+    google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChartBarra2);
+
+     function drawChartBarra2() {
+        var data = google.visualization.arrayToDataTable([
+
+          ['Año', 'Cantidad de Aspirantes'],
+
+           @foreach ($barra as $barrass)
+          ['{{$barrass->Año}}', {{$barrass->Cantidad}}],
+          @endforeach
+
+
+
+
+]);
+
+        var options = {
+          
+          
+         
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart2'));
+
+        chart.draw(data,google.charts.Bar.convertOptions(options));
+      }
     </script>
-</head>
+  </head>
+
+
 
 <body>
-    <!--Div that will hold the pie chart-->
-    <div id="chart_div"></div>
-</body>
 
-</html>
+  <div class="page-container">
+
+
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+      <div class="section__content section__content--p30">
+        <div class="container-fluid">
+          <div class="row">
+
+
+            <div class="col-lg-6">
+              <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                  <h3 class="title-2 m-b-40">Aspirantes por programas</h3>
+                 <div id="piechart" style="width: 600px; height: 500px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                  <h3 class="title-2 m-b-40">Aspirantes por programas</h3>
+              
+                  <div id="barchart" style="width: 600px; height: 400px;"></div>
+                    
+               
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Aspirantes por Año</h3>
+                                        <div id="barchart2" style="width: 600px; height: 350px"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright">
+                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+  </div>
+  <!-- END PAGE CONTAINER-->
+
+  </div>
+
+
+</body>

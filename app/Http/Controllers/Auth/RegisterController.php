@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/personas';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -48,12 +48,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+       
+            return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'TipoUsuario' =>['required'],
+            'Programa'=>['required'],
         ]);
-    }
+        }
+
+        
+    
 
     /**
      * Create a new user instance after a valid registration.
@@ -63,10 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'TipoUsuario' =>$data['TipoUsuario'],
+            'Programa'=>$data['Programa'],
+            
         ]);
     }
 }

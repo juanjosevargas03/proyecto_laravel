@@ -1,4 +1,5 @@
-@extends('layouts.app')
+
+@extends('panel')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,40 +50,90 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form method="POST" action="register" }}">
-                           
+                            <form method="POST" action="register" >
+
 
 
 
                                 <div class="form-group">
                                     <label>Nombre Completo</label>
-                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Nombre Completo">
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Nombre Completo" required>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Direccion de correo electronico</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Direccio de correo electronico">
+                                    <input class="au-input au-input--full " type="email"  name="email" placeholder="correo electronico debe ser unico" required >
                                 </div>
+
+
+
+                                <div class="form-group">
+                                    <label>Tipo de Usuario</label>
+
+                                    <div class="form-group">
+                                        <select id="TipoUsuario" class="custom-select" name="TipoUsuario" required>
+                                            <option value="">Escoja una opcion</option>
+
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Estandar</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Programa/Escuela</label>
+
+                                    <div class="form-group">
+                                        <select id="Programa" class="custom-select" name="Programa" required>
+                                            <option value="">Escoja una opcion</option>
+                                            <option value="Ninguno">Ninguno</option>
+                                            <option value="Gestion y Liderazgo">Gestion y Liderazgo</option>
+                                            <option value="Medicina">Medicina</option>
+                                            <option value="Nutricion y dietetica">Nutricion y dietetica</option>
+                                            <option value="Preventiva y Comunitaria">Preventiva y Comunitaria</option>
+                                            <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
+                                            <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                            <option value="Odontologia">Odontologia</option>
+                                            <option value="Biologia Marina">Biologia Marina</option>
+                                            <option value="Psicologia">Psicologia</option>
+                                            <option value="EANI">EANI</option>
+                                            <option value="Basicas Exactas">Basicas Exactas</option>
+                                            <option value="Medicina(Rotacion Clinica)">Medicina(Rotacion Clinica)</option>
+                                            <option value="Derecho">Derecho</option>
+
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña" minlength="8" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label> Repetir Contraseña </label>
-                                    <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Contraseña">
+                                    <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Contraseña" minlength="8" required>
                                 </div>
 
                                 <button class="btn btn-danger btn-lg btn-block" type="submit">Registrarse</button>
+                                <a href="{{ url('/') }}" class="btn btn-danger btn-lg btn-block">Volver</a>
 
 
                                 @csrf
                             </form>
-
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 
